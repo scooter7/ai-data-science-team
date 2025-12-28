@@ -16,3 +16,4 @@ xgboost
 psutil
 streamlit-flow-component
 ipython
+h2o
