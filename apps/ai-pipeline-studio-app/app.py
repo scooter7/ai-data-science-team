@@ -4,29 +4,29 @@ Streamlit app for the AI Data Science.
 Command:
     streamlit run apps/supervisor-ds-team-app/app.py
 """
+# 1. FUTURE IMPORT MUST BE FIRST
+from __future__ import annotations
 
 import sys
 import os
 
-# 1. Get the directory of this current file (app.py)
+# 2. PATH PATCHING (To fix the ModuleNotFoundError)
+# Get the directory of this current file (app.py)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# 2. Go two levels up to the repository root
-#    (apps -> ai-pipeline-studio-app -> root)
+# Go two levels up to the repository root (apps -> ai-pipeline-studio-app -> root)
 root_dir = os.path.abspath(os.path.join(current_dir, "..", ".."))
 
-# 3. Add the root to the system path so Python can find 'ai_data_science_team'
-sys.path.append(root_dir)
+# Add the root to the system path so Python can find 'ai_data_science_team'
+if root_dir not in sys.path:
+    sys.path.append(root_dir)
 
-# --- NOW your imports will work ---
+# 3. REGULAR IMPORTS (Now your custom module imports will work)
 from ai_data_science_team.agents.data_loader_tools_agent import DataLoaderToolsAgent
 from ai_data_science_team.agents.data_wrangling_agent import DataWranglingAgent
 
-from __future__ import annotations
-
 import re
 import uuid
-import os
 import json
 import inspect
 import shutil
